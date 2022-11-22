@@ -8,24 +8,25 @@ dir_path='E:/python/test'
 currentDir = ''
 dictFiles = {}
 
-
 class Window(QMainWindow):
    def __init__(self):
       super(Window,self).__init__()
 
-      self.setWindowTitle("notifier")
-      self.setGeometry(300, 250, 350, 200)
+      #self.setWindowTitle("notifier")
+      #self.setGeometry(300, 250, 350, 200)
 
-      self.main_text = QtWidgets.QLabel(self)
-      self.main_text.setText("Скрипт работает")
-      self.main_text.move(100,100)
-      self.main_text.adjustSize()
+      #self.main_text = QtWidgets.QLabel(self)
+      #self.main_text.setText("Скрипт работает")
+      #self.main_text.move(100,100)
+      #self.main_text.adjustSize()
 
-      self.btn = QtWidgets.QPushButton(self)
-      self.btn.move(70, 150)
-      self.btn.setText('Нажми на меня')
-      self.btn.setFixedWidth(200)
-      self.btn.clicked.connect(self.showMessage)   
+      #self.btn = QtWidgets.QPushButton(self)
+      #self.btn.move(70, 150)
+      #self.btn.setText('Нажми на меня')
+      #self.btn.setFixedWidth(200)
+      #self.btn.clicked.connect(self.showMessage)
+      while True:
+         self.showMessage()
 
    def add_label(self):
       print('add')
@@ -36,12 +37,14 @@ class Window(QMainWindow):
       self.message.setText("Information ")
       self.message.setWindowTitle("Information MessageBox")
       self.message.show()
+      self.retval = self.message.exec_()
+      time.sleep(5)
 
 def application():
    app = QApplication(sys.argv)
    window = Window()
-   window.show()
-   sys.exit(app.exec_())
+#  window.show()
+# sys.exit(app.exec_())
 
 def countFiles():
    for element in os.listdir(dir_path):
