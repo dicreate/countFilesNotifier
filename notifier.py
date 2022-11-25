@@ -1,8 +1,6 @@
-import os, os.path
-import time
+import os, os.path, sys, time, datetime
 from PyQt5 import QtWidgets, QtGui
 from PyQt5.QtWidgets import QApplication, QMainWindow, QMessageBox, QPushButton, QDialog
-import sys
 
 defaultfont = QtGui.QFont('Times New Roman', 30)
 
@@ -37,7 +35,7 @@ class Window(QMainWindow): # класс Window на основе класса QM
             if(self.lastValue == self.dictFiles[self.currentDir]): # Сравниваем прошлое и текущее значение
                self.message.setText(f"<p style='color: red; font-size: 100px;'>ВНИМАНИЕ !!!</p><p style='margin-top: 80px'> Кол-во файлов в папке <span style='color: red; font-size: 60px;'>{self.currentDir}</span> не изменилось</p>\n \
                <p style='margin-top: 80px';> <span style='color: green;'>Серия уведомлений: 2</span></p>") # Текст сообщения 
-               self.message.setWindowTitle(self.currentDir) # Заголовок сообщения
+               self.message.setWindowTitle(f"Объект: {self.currentDir}    Дата и время: {str(datetime.datetime.now())}") # Заголовок сообщения
                self.message.show() # Вызов сообщения
                self.retval = self.message.exec_() # Корректное завершение 
             print(self.dictFiles)  
