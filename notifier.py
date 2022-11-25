@@ -1,17 +1,23 @@
 import os, os.path
 import time
-from PyQt5 import QtWidgets
-from PyQt5.QtWidgets import QApplication, QMainWindow, QMessageBox, QPushButton
+from PyQt5 import QtWidgets, QtGui
+from PyQt5.QtWidgets import QApplication, QMainWindow, QMessageBox, QPushButton, QDialog
 import sys
 
-class Window(QMainWindow):
-   def __init__(self):
-      super(Window,self).__init__()
+defaultfont = QtGui.QFont('Times New Roman', 30)
+
+class Window(QMainWindow): # класс Window на основе класса QMainWindow
+   def __init__(self): # конструктор
+      super(Window, self).__init__()
       self.dir_path='E:/python/test'
       self.currentDir = ''
       self.dictFiles = {}
       self.message = QMessageBox(self)
-      self.message.setIcon(QMessageBox.Critical)
+      self.message.setIcon(QMessageBox.Warning)
+      self.message.setFont(defaultfont)
+      
+      self.message.setStyleSheet("QPushButton:hover{background-color: rgb(255, 93, 52);} ")
+      self.message.setStyleSheet("QPushButton:hover{background-color: rgb(255, 93, 52);} QLabel{min-width: 1000px; min-height: 600px;}")
 
       while True:
          self.showMessage()
@@ -26,7 +32,8 @@ class Window(QMainWindow):
                self.currentValue = self.dictFiles[self.currentDir]
             self.dictFiles[self.currentDir] = sum(1 for files in os.scandir(self.element_path) if files.is_file)
             if(self.currentValue == self.dictFiles[self.currentDir]):
-               self.message.setText("Количество файлов в папке " + self.currentDir + " не изменилось")
+               self.message.setText(f"<p style='color: red; font-size: 60px;'>ВНИМАНИЕ !!!</p><p style='margin-top: 80px'> Кол-во файлов в папке <span style='color: red; font-size: 60px;'>{self.currentDir}</span> не изменилось</p>\n \
+               <p style='margin-top: 80px';> <span style='color: green;'>Серия уведомлений: 2</span></p>")
                self.message.setWindowTitle(self.currentDir)
                self.message.show()
                self.retval = self.message.exec_()
