@@ -8,7 +8,7 @@ defaultfont = QtGui.QFont('Times New Roman', 30)
 class Window(QMainWindow): # класс Window на основе класса QMainWindow
    def __init__(self): # конструктор
       super(Window, self).__init__() # Метод super для наследования базовых классов 
-      self.dir_path = 'D:/VIDEO/TRASSA/EXPORT' # Папка со всеми объектами 
+      self.dir_path = 'E:/TRASSA/EXPORT' # Папка со всеми объектами 
       self.interval = 10 # Интервал работы скрипты
       self.clearConsoleInterval = 30 # Интервал очистки консоли
 
@@ -110,7 +110,7 @@ class Window(QMainWindow): # класс Window на основе класса QM
                         self.notificationMessage =  f"<span style='color: red;'>Серия уведомлений: {self.notifications[self.currentDir]}</span></p><p style='color: red; font-size: 18px'>Последнее уведомление. Необходимо возобновить уведомления, если хотите продолжить их получать</p>"
                      
                      if (self.notifications[self.currentDir]) < 4:
-                        print(f"[{datetime.datetime.now()}]: Количество файлов в папке {self.currentDir} не изменилось \n {datetime.datetime.now()}]: Ожидание ответа ...") 
+                        print(f"[{datetime.datetime.now()}]: Количество файлов в папке {self.currentDir} не изменилось \n[{datetime.datetime.now()}]: Ожидание ответа ...") 
                         self.writeToFile(f"[{datetime.datetime.now()}]: Количество файлов в папке {self.currentDir} не изменилось \n {datetime.datetime.now()}]: Ожидание ответа ... \n") 
                         self.message.setText(f"<p style='color: red; font-size: 100px;'>ВНИМАНИЕ !!!</p><p style='margin-top: 80px'> Кол-во файлов в папке не изменилось</p><p><span style='color: red; font-size: 80px;'>{self.currentDir}</span></p>\n \
                         <p style='margin-top: 60px';>{self.notificationMessage}") # Текст сообщения 
