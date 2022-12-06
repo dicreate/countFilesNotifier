@@ -9,8 +9,8 @@ class Window(QMainWindow): # класс Window на основе класса QM
    def __init__(self): # конструктор
       super(Window, self).__init__() # Метод super для наследования базовых классов 
       self.dir_path = 'E:/TRASSA/EXPORT' # Папка со всеми объектами 
-      self.interval = 10 # Интервал работы скрипты
-      self.clearConsoleInterval = 30 # Интервал очистки консоли
+      self.interval = 1080 # Интервал работы скрипты
+      self.clearConsoleInterval = 7200 # Интервал очистки консоли
 
       self.currentDir = '' # Папка, с которой работает скрипт в настоящий момент времени
       self.dictFiles = {} # Объект, в котором хранятся все директории и количество файлов в них
